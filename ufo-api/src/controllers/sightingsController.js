@@ -3,40 +3,6 @@ const { applyFilters, applyPagination, extractYear } = require('../utils/filters
 const { formatSightings, formatSighting, formatSuccessResponse, getAttributeDescriptions } = require('../utils/formatters');
 
 /**
- * Get all sightings without pagination (full dataset)
- * GET /api/v1/sightings/all
- */
-function getAllSightingsData(req, res) {
-  try {
-    const allSightings = getAllSightings();
-    
-    // Apply filters if any
-    const filtered = applyFilters(allSightings, req.query);
-
-    // Format response (summary format for performance)
-    const formattedData = formatSightings(filtered, false);
-    
-    res.json({
-      success: true,
-      data: formattedData,
-      meta: {
-        total: formattedData.length,
-        warning: formattedData.length > 5000 ? 'Large dataset - consider using pagination for better performance' : null
-      }
-    });
-  } catch (error) {
-    console.error('Error in getAllSightingsData:', error);
-    res.status(500).json({
-      success: false,
-      error: {
-        message: 'Failed to retrieve all sightings',
-        statusCode: 500
-      }
-    });
-  }
-}
-
-/**
  * Get paginated sightings with simple page/perPage parameters
  * GET /api/v1/sightings/paginated
  */
@@ -387,7 +353,6 @@ function calculateMedian(arr) {
 }
 
 module.exports = {
-  getAllSightingsData,
   getPaginatedSightings,
   getSightings,
   getSightingById,

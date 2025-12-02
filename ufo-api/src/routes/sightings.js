@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getAllSightingsData,
   getPaginatedSightings,
   getSightings,
   getSightingById,
@@ -16,7 +15,6 @@ const { validateSightingsQuery, validateSightingId } = require('../middleware/va
 const { asyncHandler } = require('../middleware/errorHandler');
 
 // Sightings routes
-router.get('/sightings/all', validateSightingsQuery, asyncHandler(getAllSightingsData));
 router.get('/sightings/paginated', asyncHandler(getPaginatedSightings));
 router.get('/sightings', validateSightingsQuery, asyncHandler(getSightings));
 router.get('/sightings/:id', validateSightingId, asyncHandler(getSightingById));

@@ -51,8 +51,8 @@ app.get('/', (req, res) => {
     description: 'REST API for Hatch UFO Database - serving historical UFO sightings data',
     documentation: '/api-docs',
     endpoints: {
+      sightingsPaginated: '/api/v1/sightings/paginated',
       sightings: '/api/v1/sightings',
-      allSightings: '/api/v1/sightings/all',
       sightingById: '/api/v1/sightings/:id',
       statistics: '/api/v1/statistics',
       filters: {
