@@ -1,0 +1,15 @@
+Domaine,Filtres disponibles,Valeurs exemples,Type de filtre,Priorité
+Localisation - Pays,25+ pays/régions,"France, Japon, USA, Grande-Bretagne, Russie, Allemagne, Italie, Pologne, Belgique, Portugal, Suisse, Scandinavie, Corée, Israël, Lune, Océan Atlantique",Multi-select dropdown,Primaire
+Localisation - Type de lieu,13 types,"Montagnes, Fermes, Métropole, Zones résidentielles, Côtes, Forêt, Pâturage, Ville, Haute mer, Offshore",Multi-select checkboxes,Secondaire
+Période temporelle - Année,840 à 2000+,"1600-1800, 1900-1950, 1950-2000",Range slider ou groupement par siècle,Primaire
+Période temporelle - Mois/Jour,Janvier à Décembre,"3/17/1458, 5/21/70, 12/18/1707",Date picker ou saisonnier,Tertiaire
+Crédibilité,3 à 15+,"3 (faible), 5 (moyen), 8 (bon), 10+ (excellent)",Slider numérique ou rating,Primaire
+Étrangeté/Bizarrerie,3 à 10,"3 (normal), 5 (moyen), 8 (très bizarre), 10 (maximum)",Slider numérique ou rating,Primaire
+Type d'observateurs,8+ types,"Militaires (MIL), Civils (CIV), Haute qualité (HQO), Scientifiques (SCI), Zone côtière (CST), En mer (SEA)",Multi-select checkboxes,Secondaire
+Morphologie UFO,8 formes principales,"Soucoupe (SCR), Cigare (CIG), Delta (DLT), Points lumineux (NLT), Boule de feu (FBL)",Multi-select avec icônes,Secondaire
+Durée d'observation,1 à 180+ minutes,"1-5 min, 5-15 min, 15-60 min, 60+ min",Range slider ou groupes prédéfinis,Secondaire
+Heure d'observation,0-24 heures,"06:00, 12:00, 18:00, 22:00, nuit, jour, crépuscule",Time picker ou groupement,Tertiaire
+Phénomènes associés,25+ phénomènes,"Atterrissage (LND), Sons (SND), Traces (TRC), Humanoides (OID), Effets humains (HUM), Camouflage (CMF)",Multi-select checkboxes ou tags,Secondaire
+Mésidentification,Probable/Non probable,"Inclure tous, Exclure mésidentifications, Seulement mésidentifications",Toggle ou boutons radio,Tertiaire
+Recherche textuelle,Libre,"N'importe quel texte, description, lieu, référence",Barre de recherche,Secondaire
+Source/Référence,50+ sources,"Hatch UDB, SOBEPS, Jacques Vallée, Charles Fort, etc.",Multi-select dropdown,Tertiaire

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ufo-api
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATA_FILE
+        value: ./src/data/hatch_udb.json
+      - key: CORS_ORIGIN
+        value: "*"

@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+.vscode
+*.md
+!README.md
+.DS_Store
+test-api.sh
+EXAMPLES.md
+DEPLOY.md
+ARCHITECTURE.md
+CONTRIBUTING.md
+CHANGELOG.md
