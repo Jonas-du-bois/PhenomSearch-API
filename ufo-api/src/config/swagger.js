@@ -586,6 +586,67 @@ Cette API est publique et ne nécessite pas d'authentification.
           }
         }
       },
+      '/sightings/paginated': {
+        get: {
+          tags: ['Sightings'],
+          summary: 'Récupérer les observations avec pagination simple',
+          description: 'Retourne une liste paginée d\'observations avec des paramètres simples: page et perPage. Idéal pour une navigation par pages.',
+          parameters: [
+            {
+              name: 'page',
+              in: 'query',
+              description: 'Numéro de la page (commence à 1)',
+              schema: { type: 'integer', default: 1, minimum: 1 },
+              example: 1
+            },
+            {
+              name: 'perPage',
+              in: 'query',
+              description: 'Nombre d\'observations par page (1-500)',
+              schema: { type: 'integer', default: 50, minimum: 1, maximum: 500 },
+              example: 50
+            }
+          ],
+          responses: {
+            '200': {
+              description: 'Liste paginée des observations',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      success: { type: 'boolean', example: true },
+                      data: {
+                        type: 'array',
+                        items: { $ref: '#/components/schemas/Sighting' }
+                      },
+                      pagination: {
+                        type: 'object',
+                        properties: {
+                          page: { type: 'integer', example: 1 },
+                          perPage: { type: 'integer', example: 50 },
+                          total: { type: 'integer', example: 18116 },
+                          totalPages: { type: 'integer', example: 363 },
+                          hasNextPage: { type: 'boolean', example: true },
+                          hasPrevPage: { type: 'boolean', example: false }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            '500': {
+              description: 'Erreur serveur',
+              content: {
+                'application/json': {
+                  schema: { $ref: '#/components/schemas/ErrorResponse' }
+                }
+              }
+            }
+          }
+        }
+      },
       '/sightings': {
         get: {
           tags: ['Sightings'],

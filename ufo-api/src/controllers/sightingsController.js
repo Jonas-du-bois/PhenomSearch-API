@@ -37,6 +37,53 @@ function getAllSightingsData(req, res) {
 }
 
 /**
+ * Get paginated sightings with simple page/perPage parameters
+ * GET /api/v1/sightings/paginated
+ */
+function getPaginatedSightings(req, res) {
+  try {
+    const allSightings = getAllSightings();
+    
+    // Parse pagination parameters
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const perPage = Math.min(500, Math.max(1, parseInt(req.query.perPage, 10) || 50));
+    
+    // Calculate offset from page number
+    const offset = (page - 1) * perPage;
+    const total = allSightings.length;
+    const totalPages = Math.ceil(total / perPage);
+    
+    // Get paginated data
+    const paginatedData = allSightings.slice(offset, offset + perPage);
+    
+    // Format response
+    const formattedData = formatSightings(paginatedData, false);
+    
+    res.json({
+      success: true,
+      data: formattedData,
+      pagination: {
+        page,
+        perPage,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error in getPaginatedSightings:', error);
+    res.status(500).json({
+      success: false,
+      error: {
+        message: 'Failed to retrieve paginated sightings',
+        statusCode: 500
+      }
+    });
+  }
+}
+
+/**
  * Get all sightings with optional filters and pagination
  * GET /api/v1/sightings
  */
@@ -341,6 +388,7 @@ function calculateMedian(arr) {
 
 module.exports = {
   getAllSightingsData,
+  getPaginatedSightings,
   getSightings,
   getSightingById,
   getStatistics,
