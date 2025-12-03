@@ -1,5 +1,5 @@
 {
-  "name": "ufo-api",
+  "name": "phenom-search-api",
   "version": "1.0.0",
   "description": "REST API for Hatch UFO Database - serving UFO sightings data",
   "main": "src/server.js",
@@ -12,9 +12,10 @@
     "api",
     "rest",
     "hatch",
-    "sightings"
+    "sightings",
+    "phenom"
   ],
-  "author": "",
+  "author": "Jonas_du_bois",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
